@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        img{
+            height: 200px;
+            width: 200px;
+            filter: grayscale(100%);
+            transition:  filter 0.3s ease-in-out;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        img:hover{
+            cursor: pointer;
+            filter: none;
+            transform: scale(1.1);
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .container{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            background: linear-gradient(to bottom,#00ffcc, #bb8aff, rgb(255, 203, 90));
+        }
+
+        .box{
+            height: 95vh;
+            width: 100vw;
+            max-width: 640px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            justify-items: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+        <img src="images/profile-pic (15).jpg" onclick="filter0()" id="filter0">
+        <img src="images/profile-pic (16).jpg" onclick="filter1()" id="filter1">
+        <img src="images/profile-pic (17).jpg" onclick="filter2()" id="filter2">
+        <img src="images/profile-pic (18).jpg" onclick="filter3()" id="filter3">
+        <img src="images/profile-pic (19).jpg" onclick="filter4()" id="filter4">
+        <img src="images/profile-pic (21).jpg" onclick="filter5()" id="filter5">
+        <img src="images/profile-pic (22).jpg" onclick="filter6()" id="filter6">
+        <img src="images/profile-pic (23).jpg" onclick="filter7()" id="filter7">
+        <img src="images/profile-pic (24).jpg" onclick="filter8()" id="filter8">
+        <a href="index2.html"><img src="images/icon.jpg" id="addmore" alt=""></a>
+        </div>
+    </div>
+    <script>
+        const pics = Array.from(document.querySelectorAll("img")).filter(img => img.id.startsWith("filter"));
+        
+        pics.forEach((pic, index) => {
+            pic.addEventListener("click", () => {
+                pics.forEach(p => p.style.filter = "grayscale()");
+                pic.style.filter = "none";
+            });
+        });
+    </script>
+</body>
+</html>
